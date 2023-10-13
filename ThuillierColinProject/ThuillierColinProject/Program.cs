@@ -1,8 +1,7 @@
-﻿using ThuillierColinProject.Models;
+﻿namespace ThuillierColinProject;
 
-namespace ThuillierColinProject;
-
-using ThuillierColinProject.Core;
+using Core;
+using Models;
 
 public class Program
 {
