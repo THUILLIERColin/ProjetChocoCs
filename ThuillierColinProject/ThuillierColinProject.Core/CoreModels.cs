@@ -32,7 +32,10 @@ public class CoreModels
     {
         GestionAdmin gestionAdmin = new GestionAdmin();
         GestionArticle gestionArticle = new GestionArticle();
-        return gestionAdmin.CreationBDD() && gestionArticle.CreationBDD();
+        bool tmp = gestionAdmin.CreationBDD();
+        Console.WriteLine("tmp : " + tmp);
+        bool tmp2 = gestionArticle.CreationBDD();
+        return tmp && tmp2;
     }
     
     public List<Article> RecupererArticle()
