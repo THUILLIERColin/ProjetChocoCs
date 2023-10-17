@@ -97,7 +97,7 @@ public class Administrateur : ParentAttributeClass
         }
         if(obj is Administrateur administrateur)
         {
-            return _login.Equals(administrateur.Login) && _password.Equals(administrateur.Password);
+            return administrateur.Login.ToLower().Equals(Login.ToLower()) && administrateur.Password.ToLower().Equals(Password.ToLower());
         }
         return false;
     }

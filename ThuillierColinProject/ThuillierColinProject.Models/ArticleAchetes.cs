@@ -67,5 +67,8 @@ public class ArticleAchetes : ParentAttributeClass
         }
     }
     
-    
+    public override string ToString()
+    {
+        return "IdAcheteur : " + IdAcheteur + " ; IdArticle : " + IdArticle + " ; Quantite : " + Quantite + " ; DateAchat : " + DateAchat;
+    }
 }

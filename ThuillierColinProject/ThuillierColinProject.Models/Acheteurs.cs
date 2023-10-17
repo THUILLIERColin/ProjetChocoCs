@@ -112,7 +112,7 @@ public class Acheteurs : ParentAttributeClass
         }
         if(obj is Acheteurs acheteurs)
         {
-            return acheteurs.Nom.Equals(Nom) && acheteurs.Prenom.Equals(Prenom) && acheteurs.Adresse.Equals(Adresse) && acheteurs.Telephone.Equals(Telephone);
+            return acheteurs.Nom.ToLower().Equals(Nom.ToLower()) && acheteurs.Prenom.ToLower().Equals(Prenom.ToLower()) && acheteurs.Adresse.ToLower().Equals(Adresse.ToLower()) && acheteurs.Telephone.ToLower().Equals(Telephone.ToLower());
         }
         return false;
     }

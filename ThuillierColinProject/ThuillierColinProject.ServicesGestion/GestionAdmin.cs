@@ -2,9 +2,9 @@ using NLog;
 
 namespace ThuillierColinProject.ServicesGestion;
 
-using ThuillierColinProject.Models;
-using ThuillierColinProject.ServiceLogs;
-using ThuillierColinProject.ServicesInteraction;
+using Models;
+using ServiceLogs;
+using ServicesInteraction;
 
 public class GestionAdmin
 {
@@ -45,10 +45,12 @@ public class GestionAdmin
         if (!ecrire.FileExist())
         {
             SingletonLog.GetInstance().Log("Création d'un administrateur", LogClass.TypeMessage.Info);
-            Administrateur admin = new Administrateur("admin", "amdin!");
+            Console.WriteLine("La base de données n'existe pas, création d'un administrateur");
+            Administrateur admin = new Administrateur("admin", "admin!");
             ecrire.Ecriture(admin);
             return true;
         }
+        Console.WriteLine("Le fichier Administrateur.json existe déjà");
         SingletonLog.GetInstance().Log("Le fichier Administrateur.json existe déjà", LogClass.TypeMessage.Info);
         return false;
     }

@@ -6,7 +6,7 @@ namespace ThuillierColinProject.ServicesGestion;
 
 public class GestionArticle
 {
-    public Article AjouterArticle()
+    public Article CreerArticle()
     {
         Article article = new Article();
         
@@ -47,10 +47,10 @@ public class GestionArticle
     public bool CreationBDD()
     {
         Ecrire<Article> ecrire = new Ecrire<Article>();
-        Console.WriteLine("Holla");
         if (!ecrire.FileExist())
         {
             SingletonLog.GetInstance().Log("Création des articles", LogClass.TypeMessage.Info);
+            Console.WriteLine("La base de données n'existe pas, création des articles");
             List<Article> articles = new List<Article>();
             articles.Add(new Article("Kinder Bueno 100g", 2.99f));
             articles.Add(new Article("Milka Chocolat au Lait 200g", 3.49f));
@@ -60,10 +60,12 @@ public class GestionArticle
             foreach (var article in articles)
             {
                 ecrire.Ecriture(article);
+                Console.WriteLine("Article ajouté" + article);
             }
 
             return true;
         }
+        Console.WriteLine("Le fichier Article.json existe déjà");
         SingletonLog.GetInstance().Log("Le fichier Article.json existe déjà", LogClass.TypeMessage.Info);
         return false;
     }
