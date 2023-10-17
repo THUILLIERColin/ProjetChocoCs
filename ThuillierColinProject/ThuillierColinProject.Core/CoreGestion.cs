@@ -131,7 +131,7 @@ public class CoreGestion
         CoreInteraction interaction = CoreSingleton.GetInstance().coreInteraction; // Récuperation de l'objet qui permet d'utiliser les class d'interaction
 
         SingletonLog.GetInstance().Log("L'utilisateur a choisi le profil administateur", LogClass.TypeMessage.Info);
-        Console.WriteLine("\nBienvenue dans le profil administrateur");
+        Console.WriteLine("Bienvenue dans le profil administrateur");
         this.ConnectionAdmin();
         bool continuer = true;
         do
