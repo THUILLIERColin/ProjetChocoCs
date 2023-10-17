@@ -40,41 +40,25 @@ public class CoreInteraction
         List<ArticleAchetes> articlesAchetes = BDD.GetInstance().articleAchetes;
         // On récupère les articles
         List<Article> articles = BDD.GetInstance().articles;
-        // On créer un dictionnaire qui va contenir les articles et leur quantité
-        Dictionary<Article, int> dico = new Dictionary<Article, int>();
         // On parcours les articles achetés
         if(articlesAchetes.Count == 0)
         {
             SingletonLog.GetInstance().Log("Aucun article acheté", LogClass.TypeMessage.Info);
             return false;
         }
-        foreach (ArticleAchetes articleAchete in articlesAchetes)
+        // On parcours les articles et on regarde combien de fois ils ont été achetés (en prenant en compte la quantité et le nombre de fois où ils ont été achetés)
+        foreach (Article article in articles)
         {
-            // On parcours les articles
-            foreach (Article article in articles)
+            int nbAchete = 0;
+            foreach (ArticleAchetes articleAchete in articlesAchetes)
             {
-                // Si l'article acheté est le même que l'article
-                if (articleAchete.IdArticle == article.Id)
+                if (article.Id == articleAchete.IdArticle)
                 {
-                    // Si l'article est déjà dans le dictionnaire
-                    if (dico.ContainsKey(article))
-                    {
-                        // On ajoute la quantité de l'article acheté à la quantité de l'article dans le dictionnaire
-                        dico[article] += articleAchete.Quantite;
-                    }
-                    else
-                    {
-                        // On ajoute l'article et sa quantité dans le dictionnaire
-                        dico.Add(article, articleAchete.Quantite);
-                    }
+                    nbAchete += articleAchete.Quantite;
                 }
             }
-        }
-        // On parcours le dictionnaire
-        foreach (KeyValuePair<Article, int> keyValuePair in dico)
-        {
-            // On écrit dans le fichier
-            File.AppendAllText(nomFichier, keyValuePair.Key.Reference + " : " + keyValuePair.Value + "\n");
+            // On ajoute le prix de l'article acheté à la somme
+            File.AppendAllText(nomFichier, article.Reference + " : " + article.Prix + "€ x " + nbAchete + " = " + article.Prix * nbAchete + "€\n");
         }
         return true;
     }
