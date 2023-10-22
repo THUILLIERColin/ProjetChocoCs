@@ -41,7 +41,7 @@ public class CoreInteraction
             }
         }
         File.AppendAllText(filepath, "----------------------------------------\n");
-        File.AppendAllText(filepath, "Prix total : " + CoreSingleton.GetInstance().coreModels.PrixCommande(articlesAchetes) + "€\n");
+        File.AppendAllText(filepath, "Prix total : " + CoreSingleton.GetInstance().CoreModels.PrixCommande(articlesAchetes) + "€\n");
         File.AppendAllText(filepath, "\nDate d'achat : " + DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss"));
         return true;
     }
@@ -60,7 +60,7 @@ public class CoreInteraction
         Console.WriteLine("Ajout d'un article à la base de donnée");
         SingletonLog.GetInstance().Log("L'utilisateur a choisi d'ajouter un article", LogClass.TypeMessage.Info);
         Ecrire<Article> ecrire = new Ecrire<Article>();
-        ecrire.Ecriture(CoreSingleton.GetInstance().coreModels.CreationArticle());
+        ecrire.Ecriture(CoreSingleton.GetInstance().CoreModels.CreationArticle());
         Console.WriteLine("Article ajouté");
         return true;
     }
@@ -188,7 +188,7 @@ public class CoreInteraction
                 }
             }
             File.AppendAllText(nomFichier, "----------------------------------------\n");
-            File.AppendAllText(nomFichier, "Prix total : " + CoreSingleton.GetInstance().coreModels.PrixCommande(date.Value) + "€\n");
+            File.AppendAllText(nomFichier, "Prix total : " + CoreSingleton.GetInstance().CoreModels.PrixCommande(date.Value) + "€\n");
             File.AppendAllText(nomFichier, "\n\n");
         }
         return true;

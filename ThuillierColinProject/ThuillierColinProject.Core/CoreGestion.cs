@@ -1,14 +1,12 @@
-using NLog;
-using ThuillierColinProject.ServicesInteraction;
-
 namespace ThuillierColinProject.Core;
 
+using ServicesInteraction;
 using ServiceLogs;
 using Models;
+using NLog;
 
 public class CoreGestion
 {
-
     public char ChoixProfil()
     {
         Console.WriteLine("Veuillez choisir entre : \t1:Administrateur  \t2: Utilisateur");
@@ -35,10 +33,12 @@ public class CoreGestion
             }
             catch (Exception e)
             {
-                SingletonLog.GetInstance().Log("Erreur lors de la saisie du choix du profil", LogClass.TypeMessage.Error);
+                SingletonLog.GetInstance()
+                    .Log("Erreur lors de la saisie du choix du profil", LogClass.TypeMessage.Error);
                 Console.WriteLine(e);
             }
         } while (!choixOk);
+
         SingletonLog.GetInstance().Log("Choix du profil : " + choix, LogClass.TypeMessage.Info);
         return choix;
     }
@@ -46,7 +46,7 @@ public class CoreGestion
     /*********************************************************************************************************************
      * Gestion du profil administrateur
      *********************************************************************************************************************/
-    
+
     /**
      * Se connecter en tant qu'administrateur
      */
@@ -68,7 +68,8 @@ public class CoreGestion
                     // On verifie si le login existe dans la base de données
                     Console.WriteLine(nbEssai > 0 ? "Login incorrect veuillez réessayer" : "Login : ");
                     login = Console.ReadLine();
-                    SingletonLog.GetInstance().Log("L'utilisateur a rentré " + login + " en login", LogClass.TypeMessage.Info);
+                    SingletonLog.GetInstance().Log("L'utilisateur a rentré " + login + " en login",
+                        LogClass.TypeMessage.Info);
                     tmpLogin = bdd.administrateurs.Exists(x => x.Login == login);
                 }
 
@@ -77,7 +78,8 @@ public class CoreGestion
                     // On verifie si le mot de passe existe dans la base de données
                     Console.WriteLine(nbEssai > 0 ? "Mot de passe incorrect veuillez réessayer" : "Mot de passe : ");
                     string password = Console.ReadLine();
-                    SingletonLog.GetInstance().Log("L'utilisateur a rentré " + password + " en mot de passe", LogClass.TypeMessage.Info);
+                    SingletonLog.GetInstance().Log("L'utilisateur a rentré " + password + " en mot de passe",
+                        LogClass.TypeMessage.Info);
                     tmpPassword = bdd.administrateurs.Exists(x => x.Password == password);
                 }
             }
@@ -85,8 +87,10 @@ public class CoreGestion
             {
                 Console.WriteLine(e);
             }
+
             nbEssai++;
         } while (!(tmpLogin && tmpPassword));
+
         SingletonLog.GetInstance().Log("L'utilisateur s'est connecté", LogClass.TypeMessage.Info);
         Console.WriteLine("Vous êtes connecté, bienvenue " + login + " !");
         return true;
@@ -97,8 +101,10 @@ public class CoreGestion
         Console.WriteLine("Que voulez-vous faire ?");
         Console.WriteLine("1 : Saisir un article");
         Console.WriteLine("2 : Créer un fichier txt (format facture) donnant la somme des articles vendus");
-        Console.WriteLine("3 : Créer un fichier txt (format facture) donnant la somme des articles vendus par acheteurs");
-        Console.WriteLine("4 : Créer un fichier txt (format facture) donnant la somme des articles vendus par date d'achat");
+        Console.WriteLine(
+            "3 : Créer un fichier txt (format facture) donnant la somme des articles vendus par acheteurs");
+        Console.WriteLine(
+            "4 : Créer un fichier txt (format facture) donnant la somme des articles vendus par date d'achat");
         Console.WriteLine("5 : Quitter");
         bool choixOk = false;
         char choix = '0';
@@ -107,7 +113,7 @@ public class CoreGestion
         {
             Console.WriteLine("Votre choix : ");
             choix = Console.ReadKey().KeyChar;
-            if(choix=='1' || choix=='2' || choix=='3' || choix=='4' || choix=='5')
+            if (choix == '1' || choix == '2' || choix == '3' || choix == '4' || choix == '5')
             {
                 choixOk = true;
             }
@@ -117,6 +123,7 @@ public class CoreGestion
                 SingletonLog.GetInstance().Log("Le nombre entré n'est pas valide", LogClass.TypeMessage.Error);
             }
         } while (!choixOk);
+
         SingletonLog.GetInstance().Log("Choix de l'action : " + choix, LogClass.TypeMessage.Info);
         Console.WriteLine();
         return choix;
@@ -128,7 +135,10 @@ public class CoreGestion
     /// <returns></returns>
     public bool ProgramAdministrateur()
     {
-        CoreInteraction interaction = CoreSingleton.GetInstance().coreInteraction; // Récuperation de l'objet qui permet d'utiliser les class d'interaction
+        CoreInteraction
+            interaction =
+                CoreSingleton.GetInstance()
+                    .CoreInteraction; // Récuperation de l'objet qui permet d'utiliser les class d'interaction
 
         SingletonLog.GetInstance().Log("L'utilisateur a choisi le profil administateur", LogClass.TypeMessage.Info);
         Console.WriteLine("Bienvenue dans le profil administrateur");
@@ -162,6 +172,7 @@ public class CoreGestion
                     Console.WriteLine("Erreur lors du choix de l'action");
                     break;
             }
+
             Console.WriteLine("Voulez-vous continuer ? (o/n)");
             if (Console.ReadKey().KeyChar != 'o')
             {
@@ -171,6 +182,7 @@ public class CoreGestion
                     .Log("L'utilisateur a quitté le programme", LogClass.TypeMessage.Info);
             }
         } while (continuer);
+
         return true;
     }
 
@@ -197,18 +209,21 @@ public class CoreGestion
                 acheteur.Nom = Console.ReadLine();
                 tmpNom = true;
             }
+
             if (!tmpPrenom)
             {
                 Console.WriteLine(nbEssai > 0 ? "Prenom incorrect veuillez réessayer" : "Prenom : ");
                 acheteur.Prenom = Console.ReadLine();
                 tmpPrenom = true;
             }
+
             if (!tmpAdresse)
             {
                 Console.WriteLine(nbEssai > 0 ? "Adresse incorrect veuillez réessayer" : "Adresse : ");
                 acheteur.Adresse = Console.ReadLine();
                 tmpAdresse = true;
             }
+
             if (!tmpTelephone)
             {
                 Console.WriteLine(nbEssai > 0 ? "Telephone incorrect veuillez réessayer" : "Telephone : ");
@@ -216,6 +231,7 @@ public class CoreGestion
                 tmpTelephone = true;
             }
         } while (!(tmpNom && tmpPrenom && tmpAdresse && tmpTelephone));
+
         // On verfie si l'acheteur existe dans la base de données
         return InscriptionAcheteur(acheteur);
     }
@@ -227,11 +243,13 @@ public class CoreGestion
         {
             if (acheteur.Equals(a))
             {
-                SingletonLog.GetInstance().Log("l'utilisateur existe déjà dans la base de données", LogClass.TypeMessage.Info);
+                SingletonLog.GetInstance().Log("l'utilisateur existe déjà dans la base de données",
+                    LogClass.TypeMessage.Info);
                 acheteur.Id = a.Id;
                 return acheteur;
             }
         }
+
         // Sinon on ajoute l'acheteur dans la base de données
         Ecrire<Acheteurs> ecrire = new Ecrire<Acheteurs>();
         ecrire.Ecriture(acheteur);
@@ -252,12 +270,13 @@ public class CoreGestion
         {
             // On affiche le prix de la commande
             Console.WriteLine("Prix de la commande : " +
-                              CoreSingleton.GetInstance().coreModels.PrixCommande(articlesAchetes));
+                              CoreSingleton.GetInstance().CoreModels.PrixCommande(articlesAchetes));
         }
         else
         {
             // On verifie si l'utilisateur a bien rentré un nombre et si le nombre est bien dans la liste des articles
-            if (!int.TryParse(choix.ToString(), out int choixInt) || choixInt > BDD.GetInstance().articles.Count || choixInt <= 0)
+            if (!int.TryParse(choix.ToString(), out int choixInt) || choixInt > BDD.GetInstance().articles.Count ||
+                choixInt <= 0)
             {
                 throw new ExceptionClass("Veuillez rentrer un nombre valide");
             }
@@ -268,6 +287,7 @@ public class CoreGestion
             {
                 throw new ExceptionClass("Veuillez rentrer un nombre valide");
             }
+
             // On ajoute l'article acheté dans la base de données
             ArticleAchetes articleAchete = new ArticleAchetes();
             articleAchete.IdArticle = BDD.GetInstance().articles[choixInt - 1].Id;
@@ -284,6 +304,7 @@ public class CoreGestion
                     "L'utilisateur a acheté l'article " + BDD.GetInstance().articles[choixInt - 1].Reference +
                     " en " + quantite + " exemplaire(s)", LogClass.TypeMessage.Info);
         }
+
         return true;
     }
 
@@ -294,7 +315,7 @@ public class CoreGestion
         bool continuer = true;
         do
         {
-            CoreSingleton.GetInstance().coreModels.AfficherArticle(BDD.GetInstance().articles);
+            CoreSingleton.GetInstance().CoreModels.AfficherArticle(BDD.GetInstance().articles);
             Console.WriteLine("F : Finir la commande");
             Console.WriteLine("P : Voir le prix de la commande");
             Console.WriteLine("Votre choix : ");
@@ -321,25 +342,29 @@ public class CoreGestion
                         .Log("L'utilisateur a quitté le programme", LogClass.TypeMessage.Info);
                     continuer = false;
                 }
+
                 Console.WriteLine();
             }
             // Verifier si l'utilisateur a bien rentré un nombre
         } while (continuer);
+
         // Quand l'utilisateur a fini sa commande, un fichier texte doit etre fait avec un recapitulatif de ses articles,
         // le prix de chacun et le prix total. Le fichier sera sauvegardé dans un dossier à son nom et le nom du fichier
         // aura le format suivant "Nom-Prenom-Jour-Mois-Annee-Heure-Minute.txt"
-        string nomFichier = acheteur.Nom + "-" + acheteur.Prenom + "-" + DateTime.Now.ToString("dd-MM-yyyy-HH-mm") + ".txt";
-        CoreSingleton.GetInstance().coreInteraction.RecapCommande(nomFichier, acheteur, articlesAchetes);
+        string nomFichier = acheteur.Nom + "-" + acheteur.Prenom + "-" + DateTime.Now.ToString("dd-MM-yyyy-HH-mm") +
+                            ".txt";
+        CoreSingleton.GetInstance().CoreInteraction.RecapCommande(nomFichier, acheteur, articlesAchetes);
         SingletonLog.GetInstance().Log("L'utilisateur a fini sa commande", LogClass.TypeMessage.Info);
         return true;
     }
+
     public bool ProgramAcheteur()
     {
         SingletonLog.GetInstance().Log("L'utilisateur a choisi le profil acheteur", LogClass.TypeMessage.Info);
         // Acheteurs profileAcheteur = this.ConnectionAcheteur();
         // On salut l'acheteur avant de lui montrer les articles
         // Console.WriteLine("Bienvenue " + profileAcheteur.Prenom + " " + profileAcheteur.Nom);
-        this.Commander( this.InscriptionAcheteur(new Acheteurs("Thuillier", "Colin", "10 rue ", "0987654321")) );
+        this.Commander(this.InscriptionAcheteur(new Acheteurs("Thuillier", "Colin", "10 rue ", "0987654321")));
         return true;
     }
 }

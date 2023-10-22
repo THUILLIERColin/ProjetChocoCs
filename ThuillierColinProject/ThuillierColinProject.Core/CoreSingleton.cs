@@ -1,15 +1,18 @@
 namespace ThuillierColinProject.Core;
 
+/// <summary>
+/// Class qui va permettre de créer un singleton pour la couche core
+/// </summary>
 public class CoreSingleton
 {
-    private static CoreSingleton instance = null;
+    private static CoreSingleton _instance = null;
     
     // On crée un objet pour le lock cad que si un thread est en train d'utiliser l'objet, les autres threads doivent attendre
     private static readonly object LockObject = new object();
     
-    public CoreInteraction coreInteraction = new CoreInteraction();
-    public CoreModels coreModels = new CoreModels();
-    public CoreGestion coreGestion = new CoreGestion();
+    public readonly CoreInteraction CoreInteraction = new CoreInteraction();
+    public readonly CoreModels CoreModels = new CoreModels();
+    public readonly CoreGestion CoreGestion = new CoreGestion();
     
     public static CoreSingleton GetInstance()
     {
@@ -17,11 +20,11 @@ public class CoreSingleton
         lock (LockObject)
         {
             // On vérifie si l'instance est null si oui on la crée
-            if(instance == null)
+            if (_instance == null)
             {
-                instance = new CoreSingleton();
+                _instance = new CoreSingleton();
             }
         }
-        return instance;
+        return _instance;
     }
 }

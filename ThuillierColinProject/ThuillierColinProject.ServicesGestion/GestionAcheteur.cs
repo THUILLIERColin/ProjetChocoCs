@@ -1,10 +1,19 @@
 namespace ThuillierColinProject.ServicesGestion;
 
-using ThuillierColinProject.Models;
-using ThuillierColinProject.ServiceLogs;
+using Models;
+using ServiceLogs;
 
+/// <summary>
+/// Class qui va gérer le model acheteur
+/// </summary>
 public class GestionAcheteur
 {
+    /// <summary>
+    /// Création d'un acheteur avec vérification des données rentrées
+    /// </summary>
+    /// <returns>
+    /// Un acheteur avec des données valides
+    /// </returns>
     public Acheteurs CreationAcheteurs()
     {
         Acheteurs acheteur = new Acheteurs();

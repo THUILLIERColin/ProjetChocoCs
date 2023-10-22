@@ -1,5 +1,8 @@
 namespace ThuillierColinProject.Models;
 
+/// <summary>
+/// Class qui va stocker les données de la base de données
+/// </summary>
 public class BDD
 {
     private static BDD instance;
