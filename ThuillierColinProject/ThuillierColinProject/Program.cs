@@ -50,7 +50,10 @@ public class Program
             Console.WriteLine("Bienvenue dans l'application de gestion de stock");
 
             /****************** Choix du profil ******************/
-            bdd.profil = gestion.ChoixProfil();
+            bdd.profil = gestion.ChoixProfil(); 
+            
+            /****************** Redirection vers le profil ******************/
+            // 1 pour administrateur et 2 pour acheteur
             if (BDD.GetInstance().profil == '1')
             {
                 gestion.ProgramAdministrateur();
@@ -58,11 +61,6 @@ public class Program
             else if (BDD.GetInstance().profil == '2')
             {
                 gestion.ProgramAcheteur();
-            }
-            else
-            {
-                SingletonLog.GetInstance().Log("Erreur lors de la redirection du profil", LogClass.TypeMessage.Error);
-                Console.WriteLine("Erreur lors du choix du profil");
             }
         }
         catch (Exception e)
