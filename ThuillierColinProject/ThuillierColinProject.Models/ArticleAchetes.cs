@@ -15,6 +15,7 @@ public class ArticleAchetes : ParentAttributeClass
     public ArticleAchetes()
     {
         SingletonLog.GetInstance().Log("Création d'un article acheté", LogClass.TypeMessage.Info);
+        DateAchat = DateTime.Now;
     }
     
     public ArticleAchetes(Guid idAcheteur, Guid idArticle, int quantite)
@@ -64,6 +65,7 @@ public class ArticleAchetes : ParentAttributeClass
                 // Si la date est null ou vide
                 throw new ExceptionClass("Erreur veuillez rentrer une date");
             }
+            _dateAchat = value;
         }
     }
     

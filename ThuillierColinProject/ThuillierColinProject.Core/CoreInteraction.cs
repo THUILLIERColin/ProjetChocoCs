@@ -6,6 +6,47 @@ using ServicesInteraction;
 
 public class CoreInteraction
 {
+    public CoreInteraction()
+    {
+        if(!Directory.Exists("./Data/Facture"))
+        {
+            Directory.CreateDirectory("./Data/Facture");
+        }
+        if(!Directory.Exists("./Data/RecapCommande"))
+        {
+            Directory.CreateDirectory("./Data/RecapCommande");
+        }
+    }
+    
+    /************************************************************************
+     * Le recap de l'acheteur
+     ************************************************************************/
+    public bool RecapCommandeAcheteur(string filepath, Acheteurs acheteur, List<ArticleAchetes> articlesAchetes)
+    {
+        File.AppendAllText(filepath, acheteur.Nom + " " + acheteur.Prenom + "\nAdresse : " + acheteur.Adresse + "\nTelephone : " + acheteur.Telephone + "\n");
+        File.AppendAllText(filepath, "\n\nArticles achetés : \n");
+        File.AppendAllText(filepath, "----------------------------------------\n");
+        // On parcours les articles achetés
+        foreach (ArticleAchetes articleAchete in articlesAchetes)
+        {
+            // On parcours les articles
+            foreach (Article article in BDD.GetInstance().articles)
+            {
+                // Si l'article acheté est le même que l'article
+                if (articleAchete.IdArticle == article.Id)
+                {
+                    // On ajoute le prix de l'article acheté à la somme
+                    File.AppendAllText(filepath, "\t* "+article.Reference + " : " + article.Prix + "€ x " + articleAchete.Quantite + " = " + article.Prix * articleAchete.Quantite + "€\n");
+                }
+            }
+        }
+        File.AppendAllText(filepath, "----------------------------------------\n");
+        File.AppendAllText(filepath, "Prix total : " + CoreSingleton.GetInstance().coreModels.PrixCommande(articlesAchetes) + "€\n");
+        File.AppendAllText(filepath, "\nDate d'achat : " + DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss"));
+        return true;
+    }
+    
+    
     /************************************************************************
      * Interaction des administrateurs
      ************************************************************************/
@@ -32,8 +73,8 @@ public class CoreInteraction
     {
         Console.WriteLine("Création du fichier facture donnant la somme des articles vendus");
         SingletonLog.GetInstance().Log("L'utilisateur a choisi de créer un fichier facture donnant la somme des articles vendus", LogClass.TypeMessage.Info);
-        // On créer un fichier avec pour nom la date, l'heure et "_factureSum.txt"
-        string nomFichier = "./Data/" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + "_factureSum.txt";
+        // On créer un fichier avec pour nom la date, l'heure et "_factureArticle.txt"
+        string nomFichier = "./Data/Facture/" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + "_factureArticle.txt";
         // On créer le fichier
         File.Create(nomFichier).Close();
         // On récupère les articles achetés
@@ -68,6 +109,36 @@ public class CoreInteraction
      */
     public bool CreerFichierFactureAcheteur()
     {
+        // On créer un fichier avec pour nom la date, l'heure et "_factureAcheteur.txt"
+        string nomFichier = "./Data/Facture/" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + "_factureAcheteur.txt";
+        // On créer le fichier
+        File.Create(nomFichier).Close();
+        // On récupère les articles achetés
+        List<ArticleAchetes> articlesAchetes = BDD.GetInstance().articleAchetes;
+        // On récupère les acheteurs
+        List<Acheteurs> acheteurs = BDD.GetInstance().acheteurs;
+        // On trie les articles achetés par acheteurs dans un dictionnaire
+        Dictionary<Acheteurs, List<ArticleAchetes>> dico = new Dictionary<Acheteurs, List<ArticleAchetes>>();
+        foreach (ArticleAchetes articleAchete in articlesAchetes)
+        {
+            Acheteurs tmp = acheteurs.Find(x => x.Id == articleAchete.IdAcheteur);
+            if (dico.ContainsKey(tmp))
+            {
+                dico[tmp].Add(articleAchete);
+            }
+            else
+            {
+                dico.Add(tmp, new List<ArticleAchetes>());
+                dico[tmp].Add(articleAchete);
+            }
+        }
+        // On parcours les acheteurs
+        foreach (KeyValuePair<Acheteurs, List<ArticleAchetes>> acheteur in dico)
+        {
+            this.RecapCommandeAcheteur(nomFichier, acheteur.Key, acheteur.Value);
+            File.AppendAllText(nomFichier, "\n\n");
+        }
+
         return true;
     }
     
@@ -76,6 +147,50 @@ public class CoreInteraction
      */
     public bool CreerFichierFactureDate()
     {
+        // On créer un fichier avec pour nom la date, l'heure et "_factureDate.txt"
+        string nomFichier = "./Data/Facture/" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + "_factureDate.txt";
+        // On créer le fichier
+        File.Create(nomFichier).Close();
+        // On récupère les articles achetés
+        List<ArticleAchetes> articlesAchetes = BDD.GetInstance().articleAchetes;
+        // On trie les articles achetés par date d'achat dans un dictionnaire
+        Dictionary<string, List<ArticleAchetes>> dico = new Dictionary<string, List<ArticleAchetes>>();
+        foreach (ArticleAchetes articleAchete in articlesAchetes)
+        {
+            string tmp = articleAchete.DateAchat.ToString("dd-MM-yyyy");
+            if (dico.ContainsKey(tmp))
+            {
+                dico[tmp].Add(articleAchete);
+            }
+            else
+            {
+                dico.Add(tmp, new List<ArticleAchetes>());
+                dico[tmp].Add(articleAchete);
+            }
+        }
+        // On parcours les dates
+        foreach (KeyValuePair<string, List<ArticleAchetes>> date in dico)
+        {
+            File.AppendAllText(nomFichier, "Date d'achat : " + date.Key + "\n");
+            File.AppendAllText(nomFichier, "----------------------------------------\n");
+            // On parcours les articles achetés
+            foreach (ArticleAchetes articleAchete in date.Value)
+            {
+                // On parcours les articles
+                foreach (Article article in BDD.GetInstance().articles)
+                {
+                    // Si l'article acheté est le même que l'article
+                    if (articleAchete.IdArticle == article.Id)
+                    {
+                        // On ajoute le prix de l'article acheté à la somme
+                        File.AppendAllText(nomFichier, "\t* "+article.Reference + " : " + article.Prix + "€ x " + articleAchete.Quantite + " = " + article.Prix * articleAchete.Quantite + "€\n");
+                    }
+                }
+            }
+            File.AppendAllText(nomFichier, "----------------------------------------\n");
+            File.AppendAllText(nomFichier, "Prix total : " + CoreSingleton.GetInstance().coreModels.PrixCommande(date.Value) + "€\n");
+            File.AppendAllText(nomFichier, "\n\n");
+        }
         return true;
     }
     
@@ -95,26 +210,7 @@ public class CoreInteraction
         }
         // On créer le fichier
         filepath = filepath + "/" + filename + ".txt";
-        File.AppendAllText(filepath, acheteur.Nom + " " + acheteur.Prenom + "\nAdresse : " + acheteur.Adresse + "\nTelephone : " + acheteur.Telephone + "\n");
-        File.AppendAllText(filepath, "\n\nArticles achetés : \n");
-        File.AppendAllText(filepath, "----------------------------------------\n");
-        // On parcours les articles achetés
-        foreach (ArticleAchetes articleAchete in articlesAchetes)
-        {
-            // On parcours les articles
-            foreach (Article article in BDD.GetInstance().articles)
-            {
-                // Si l'article acheté est le même que l'article
-                if (articleAchete.IdArticle == article.Id)
-                {
-                    // On ajoute le prix de l'article acheté à la somme
-                    File.AppendAllText(filepath, "\t* "+article.Reference + " : " + article.Prix + "€ x " + articleAchete.Quantite + " = " + article.Prix * articleAchete.Quantite + "€\n");
-                }
-            }
-        }
-        File.AppendAllText(filepath, "----------------------------------------\n");
-        File.AppendAllText(filepath, "Prix total : " + CoreSingleton.GetInstance().coreModels.PrixCommande(articlesAchetes) + "€\n");
-        File.AppendAllText(filepath, DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss"));
+        this.RecapCommandeAcheteur(filepath, acheteur, articlesAchetes);
         return true;
     }
 }

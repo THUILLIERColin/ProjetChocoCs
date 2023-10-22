@@ -183,7 +183,6 @@ public class CoreGestion
         // L'utilisateur doit saisir son nom, prenom, adresse et téléphone avant de pouvoir ajouter un article.
         Console.WriteLine("Veuillez rentrer votre nom, prenom, adresse et téléphone");
         SingletonLog.GetInstance().Log("L'utilisateur va se connecter", LogClass.TypeMessage.Info);
-        BDD bdd = BDD.GetInstance();
         Acheteurs acheteur = new Acheteurs();
         bool tmpNom = false;
         bool tmpPrenom = false;
@@ -340,8 +339,7 @@ public class CoreGestion
         // Acheteurs profileAcheteur = this.ConnectionAcheteur();
         // On salut l'acheteur avant de lui montrer les articles
         // Console.WriteLine("Bienvenue " + profileAcheteur.Prenom + " " + profileAcheteur.Nom);
-        this.Commander(new Acheteurs("Thuillier", "Colin", "115 Avenue de strasbourg", "1234567890"));
+        this.Commander( this.InscriptionAcheteur(new Acheteurs("Thuillier", "Colin", "10 rue ", "0987654321")) );
         return true;
-
     }
 }
