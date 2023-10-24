@@ -2,6 +2,11 @@ namespace ThuillierColinProject.ServicesInteraction;
 
 using ThuillierColinProject.Models;
 
+/// <summary>
+/// Class qui va permettre de vérifier si un fichier existe.
+/// Il sera le parent de la class Ecrire et Lecture
+/// </summary>
+/// <typeparam name="T"> Type de l'objet à écrire</typeparam>
 public class Exist<T>
 {
     

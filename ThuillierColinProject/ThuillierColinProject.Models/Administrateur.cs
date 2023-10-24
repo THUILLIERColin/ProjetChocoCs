@@ -5,6 +5,12 @@ using ThuillierColinProject.ServiceLogs;
 
 namespace ThuillierColinProject.Models;
 
+/// <summary>
+/// Class de l'ojet administrateur
+/// </summary>
+/// <remarks>
+/// Cette class hériete de la class ParentAttributeClass
+/// </remarks>
 [Path(@"./Data/Administrateur.json")]
 public class Administrateur : ParentAttributeClass
 {

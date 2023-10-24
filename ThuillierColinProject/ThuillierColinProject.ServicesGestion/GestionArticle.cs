@@ -4,6 +4,9 @@ using ThuillierColinProject.ServicesInteraction;
 
 namespace ThuillierColinProject.ServicesGestion;
 
+/// <summary>
+/// Class qui va gérer le model article
+/// </summary>
 public class GestionArticle
 {
     public Article CreerArticle()

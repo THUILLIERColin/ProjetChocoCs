@@ -1,5 +1,8 @@
 namespace ThuillierColinProject.ServicesInteraction;
 
+/// <summary>
+/// Class qui va permettre de verrouiller l'accès à un fichier
+/// </summary>
 public class FileLock
 {
     private static readonly object LockObjectFile = new object();

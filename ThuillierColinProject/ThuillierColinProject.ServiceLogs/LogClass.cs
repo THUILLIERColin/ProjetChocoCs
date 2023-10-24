@@ -1,11 +1,17 @@
 namespace ThuillierColinProject.ServiceLogs;
 
 using NLog;
+/// <summary>
+/// Class qui gère les logs
+/// </summary>
 public class LogClass: Logger
 {
     public enum TypeMessage { Info, Warn, Error, Fatal };
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
+    /// <summary>
+    /// Constructeur de la class
+    /// </summary>
     public LogClass()
     {
         var config = new NLog.Config.LoggingConfiguration();
@@ -20,6 +26,12 @@ public class LogClass: Logger
         NLog.LogManager.Configuration = config;
     }
 
+    /// <summary>
+    /// Méthode qui va écrire dans le fichier de log
+    /// </summary>
+    /// <param name="message"> Message à écrire dans le fichier de log</param>
+    /// <param name="type"> Type de message à écrire dans le fichier de log</param>
+    /// <returns> Retourne true si l'écriture dans le fichier de log s'est bien passé</returns>
     public bool Log(string message, TypeMessage type)
     {
         switch (type)

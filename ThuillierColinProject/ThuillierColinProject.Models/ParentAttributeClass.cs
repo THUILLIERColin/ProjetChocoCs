@@ -1,5 +1,11 @@
 namespace ThuillierColinProject.Models;
 
+/// <summary>
+/// Class parente des attributs
+/// </summary>
+/// <remarks>
+/// Class qui contient la méthode pour récupérer l'attribut. Elle sera hérité par les classes qui ont des attributs
+/// </remarks>
 public class ParentAttributeClass
 {
     public string GetAttribute(Type t)

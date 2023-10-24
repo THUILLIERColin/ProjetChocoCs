@@ -3,6 +3,12 @@ using Newtonsoft.Json;
 
 namespace ThuillierColinProject.Models;
 
+/// <summary>
+/// Class de l'ojet acheteur
+/// </summary>
+/// <remarks>
+/// Cette class hériete de la class ParentAttributeClass
+/// </remarks>
 [Path("./Data/Acheteurs.json")]
 public class Acheteurs : ParentAttributeClass
 {

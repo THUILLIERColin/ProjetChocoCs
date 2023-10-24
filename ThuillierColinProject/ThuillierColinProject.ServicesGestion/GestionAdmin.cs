@@ -6,6 +6,9 @@ using Models;
 using ServiceLogs;
 using ServicesInteraction;
 
+/// <summary>
+/// Class qui va gérer le model administrateur
+/// </summary>
 public class GestionAdmin
 {
     public Administrateur CreationAdministrateur()

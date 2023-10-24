@@ -2,6 +2,9 @@ using ThuillierColinProject.ServiceLogs;
 
 namespace ThuillierColinProject.Models;
 
+/// <summary>
+/// Class d'exception personnalisé
+/// </summary>
 public class ExceptionClass : Exception
 {
     string _message;

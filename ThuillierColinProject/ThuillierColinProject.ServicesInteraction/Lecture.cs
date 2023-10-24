@@ -5,6 +5,14 @@ namespace ThuillierColinProject.ServicesInteraction;
 using ThuillierColinProject.Models;
 using Newtonsoft.Json;
 
+/// <summary>
+/// Class qui va permettre de lire un fichier
+/// </summary>
+/// <typeparam name="T"> Type de l'objet à écrire</typeparam>
+/// <remarks>
+/// Le type de l'objet doit être un type de la classe ParentAttributeClass pour que la méthode GetAttribute fonctionne.
+/// Car le filepath est récupéré grâce à la méthode GetAttribute de la classe ParentAttributeClass
+/// </remarks>
 public class Lecture<T> : Exist<T>
 {
     /// <summary>

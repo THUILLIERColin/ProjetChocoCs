@@ -1,5 +1,12 @@
 namespace ThuillierColinProject.ServiceLogs;
 
+/// <summary>
+/// Classe SingletonLog qui hérite de la classe LogClass
+/// </summary>
+/// <remarks>
+/// Elle va permettre de créer un objet de type SingletonLog et donc de pouvoir utiliser
+/// la méthodes de la classe LogClass qui permet d'inserer un message dans le fichier de log
+/// </remarks>
 public class SingletonLog : LogClass
 {
     public static SingletonLog instance;
