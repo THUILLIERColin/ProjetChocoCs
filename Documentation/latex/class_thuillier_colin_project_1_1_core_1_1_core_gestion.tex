@@ -1,0 +1,182 @@
+\doxysection{Référence de la classe Thuillier\+Colin\+Project.\+Core.\+Core\+Gestion}
+\hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_gestion}{}\label{class_thuillier_colin_project_1_1_core_1_1_core_gestion}\index{ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}}
+
+
+Class qui permet de gérer les interactions avec l\textquotesingle{}utilisateur.  
+
+
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a8765667909ec650fae8469490243c166}{Choix\+Profil}} ()
+\begin{DoxyCompactList}\small\item\em Choix du profil de l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a0e38be8e8936fd3a14626dc6cfc2178f}{Connection\+Admin}} ()
+\begin{DoxyCompactList}\small\item\em Connection de l\textquotesingle{}administrateur. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_gestion_ac49ef215e7c0ae2e607cad61471985bb}{Choix\+Admin}} ()
+\begin{DoxyCompactList}\small\item\em Choix de l\textquotesingle{}action que peut faire l\textquotesingle{}administrateur lorsqu\textquotesingle{}il est connecté \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_gestion_ae324b5e3a0857a5b83de5a83532f2e49}{Program\+Administrateur}} ()
+\begin{DoxyCompactList}\small\item\em Le programme de l\textquotesingle{}administrateur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}} \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a7b80eb498fde0551d39f47dcc8073ff7}{Connection\+Acheteur}} ()
+\begin{DoxyCompactList}\small\item\em Connection de l\textquotesingle{}acheteur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}} \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a94bd9b9feb689994bff3801ea43898d6}{Inscription\+Acheteur}} (\mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}} acheteur)
+\begin{DoxyCompactList}\small\item\em On verifie si l\textquotesingle{}acheteur existe dans la base de données et on l\textquotesingle{}ajoute si il n\textquotesingle{}existe pas. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a0d12a848160a13211acdd152e8c18592}{Choisir\+Article}} (\mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}} acheteur, List$<$ \mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_article_achetes}{Article\+Achetes}} $>$ articles\+Achetes)
+\begin{DoxyCompactList}\small\item\em Choix de l\textquotesingle{}article que l\textquotesingle{}acheteur veut acheter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_gestion_af12ece45460c170fb32afdbe50346d50}{Commander}} (\mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}} acheteur)
+\begin{DoxyCompactList}\small\item\em Lorque l\textquotesingle{}acheteur est connecté, il peut commander des articles. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_gestion_ad2345e6b56d2743f52dd9d7384907c35}{Program\+Acheteur}} ()
+\begin{DoxyCompactList}\small\item\em Le programme de l\textquotesingle{}acheteur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Class qui permet de gérer les interactions avec l\textquotesingle{}utilisateur. 
+
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a0d12a848160a13211acdd152e8c18592}\label{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a0d12a848160a13211acdd152e8c18592} 
+\index{ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}!ChoisirArticle@{ChoisirArticle}}
+\index{ChoisirArticle@{ChoisirArticle}!ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}}
+\doxysubsubsection{\texorpdfstring{ChoisirArticle()}{ChoisirArticle()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Gestion.\+Choisir\+Article (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}}}]{acheteur,  }\item[{List$<$ \mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_article_achetes}{Article\+Achetes}} $>$}]{articles\+Achetes }\end{DoxyParamCaption})}
+
+
+
+Choix de l\textquotesingle{}article que l\textquotesingle{}acheteur veut acheter. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em acheteur} & L\textquotesingle{}acheteur qui achete l\textquotesingle{}article \\
+\hline
+{\em articles\+Achetes} & La liste des articles achetés \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+True si l\textquotesingle{}acheteur veut continuer à acheter 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception\+Class} & Si l\textquotesingle{}utilisateur se trompe lors de la saisie du numéro de l\textquotesingle{}article ou de la quantité \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_gestion_ac49ef215e7c0ae2e607cad61471985bb}\label{class_thuillier_colin_project_1_1_core_1_1_core_gestion_ac49ef215e7c0ae2e607cad61471985bb} 
+\index{ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}!ChoixAdmin@{ChoixAdmin}}
+\index{ChoixAdmin@{ChoixAdmin}!ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}}
+\doxysubsubsection{\texorpdfstring{ChoixAdmin()}{ChoixAdmin()}}
+{\footnotesize\ttfamily char Thuillier\+Colin\+Project.\+Core.\+Core\+Gestion.\+Choix\+Admin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Choix de l\textquotesingle{}action que peut faire l\textquotesingle{}administrateur lorsqu\textquotesingle{}il est connecté 
+
+\begin{DoxyReturn}{Renvoie}
+Le choix de l\textquotesingle{}action sous forme de char 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a8765667909ec650fae8469490243c166}\label{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a8765667909ec650fae8469490243c166} 
+\index{ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}!ChoixProfil@{ChoixProfil}}
+\index{ChoixProfil@{ChoixProfil}!ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}}
+\doxysubsubsection{\texorpdfstring{ChoixProfil()}{ChoixProfil()}}
+{\footnotesize\ttfamily char Thuillier\+Colin\+Project.\+Core.\+Core\+Gestion.\+Choix\+Profil (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Choix du profil de l\textquotesingle{}utilisateur. 
+
+L\textquotesingle{}utilisateur doit choisir entre administrateur et acheteur 
+
+\begin{DoxyReturn}{Renvoie}
+Le choix de l\textquotesingle{}utilisateur sous forme de char 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_gestion_af12ece45460c170fb32afdbe50346d50}\label{class_thuillier_colin_project_1_1_core_1_1_core_gestion_af12ece45460c170fb32afdbe50346d50} 
+\index{ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}!Commander@{Commander}}
+\index{Commander@{Commander}!ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}}
+\doxysubsubsection{\texorpdfstring{Commander()}{Commander()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Gestion.\+Commander (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}}}]{acheteur }\end{DoxyParamCaption})}
+
+
+
+Lorque l\textquotesingle{}acheteur est connecté, il peut commander des articles. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em acheteur} & L\textquotesingle{}acheteur qui commande \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+True si l\textquotesingle{}acheteur a fini sa commande 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a7b80eb498fde0551d39f47dcc8073ff7}\label{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a7b80eb498fde0551d39f47dcc8073ff7} 
+\index{ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}!ConnectionAcheteur@{ConnectionAcheteur}}
+\index{ConnectionAcheteur@{ConnectionAcheteur}!ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}}
+\doxysubsubsection{\texorpdfstring{ConnectionAcheteur()}{ConnectionAcheteur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}} Thuillier\+Colin\+Project.\+Core.\+Core\+Gestion.\+Connection\+Acheteur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Connection de l\textquotesingle{}acheteur. 
+
+\begin{DoxyReturn}{Renvoie}
+L\textquotesingle{}acheteur connecté 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a0e38be8e8936fd3a14626dc6cfc2178f}\label{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a0e38be8e8936fd3a14626dc6cfc2178f} 
+\index{ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}!ConnectionAdmin@{ConnectionAdmin}}
+\index{ConnectionAdmin@{ConnectionAdmin}!ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}}
+\doxysubsubsection{\texorpdfstring{ConnectionAdmin()}{ConnectionAdmin()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Gestion.\+Connection\+Admin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Connection de l\textquotesingle{}administrateur. 
+
+\begin{DoxyReturn}{Renvoie}
+True si l\textquotesingle{}administrateur est connecté 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a94bd9b9feb689994bff3801ea43898d6}\label{class_thuillier_colin_project_1_1_core_1_1_core_gestion_a94bd9b9feb689994bff3801ea43898d6} 
+\index{ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}!InscriptionAcheteur@{InscriptionAcheteur}}
+\index{InscriptionAcheteur@{InscriptionAcheteur}!ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}}
+\doxysubsubsection{\texorpdfstring{InscriptionAcheteur()}{InscriptionAcheteur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}} Thuillier\+Colin\+Project.\+Core.\+Core\+Gestion.\+Inscription\+Acheteur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}}}]{acheteur }\end{DoxyParamCaption})}
+
+
+
+On verifie si l\textquotesingle{}acheteur existe dans la base de données et on l\textquotesingle{}ajoute si il n\textquotesingle{}existe pas. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em acheteur} & L\textquotesingle{}acheteur à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+L\textquotesingle{}acheteur après vérification 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_gestion_ad2345e6b56d2743f52dd9d7384907c35}\label{class_thuillier_colin_project_1_1_core_1_1_core_gestion_ad2345e6b56d2743f52dd9d7384907c35} 
+\index{ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}!ProgramAcheteur@{ProgramAcheteur}}
+\index{ProgramAcheteur@{ProgramAcheteur}!ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}}
+\doxysubsubsection{\texorpdfstring{ProgramAcheteur()}{ProgramAcheteur()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Gestion.\+Program\+Acheteur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Le programme de l\textquotesingle{}acheteur. 
+
+\begin{DoxyReturn}{Renvoie}
+True si l\textquotesingle{}acheteur a fini son programme 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_gestion_ae324b5e3a0857a5b83de5a83532f2e49}\label{class_thuillier_colin_project_1_1_core_1_1_core_gestion_ae324b5e3a0857a5b83de5a83532f2e49} 
+\index{ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}!ProgramAdministrateur@{ProgramAdministrateur}}
+\index{ProgramAdministrateur@{ProgramAdministrateur}!ThuillierColinProject.Core.CoreGestion@{ThuillierColinProject.Core.CoreGestion}}
+\doxysubsubsection{\texorpdfstring{ProgramAdministrateur()}{ProgramAdministrateur()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Gestion.\+Program\+Administrateur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Le programme de l\textquotesingle{}administrateur. 
+
+C\textquotesingle{}est la suite d\textquotesingle{}action que peut faire l\textquotesingle{}administrateur 
+
+\begin{DoxyReturn}{Renvoie}
+True si l\textquotesingle{}administrateur a fini son programme 
+\end{DoxyReturn}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+Thuillier\+Colin\+Project.\+Core/Core\+Gestion.\+cs\end{DoxyCompactItemize}

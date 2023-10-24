@@ -1,0 +1,131 @@
+\doxysection{Référence de la classe Thuillier\+Colin\+Project.\+Core.\+Core\+Interaction}
+\hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_interaction}{}\label{class_thuillier_colin_project_1_1_core_1_1_core_interaction}\index{ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}}
+
+
+Class qui va gérer les interactions avec les fichiers.  
+
+
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_interaction_ace95959e5e968c1b6e1e0bd538b88bcd}{Recap\+Commande\+Acheteur}} (string filepath, \mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}} acheteur, List$<$ \mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_article_achetes}{Article\+Achetes}} $>$ articles\+Achetes)
+\begin{DoxyCompactList}\small\item\em Permet de créer un fichier txt (format facture) donnant la somme des articles achetés par un acheteur. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_interaction_a1f456c020d05bacb132b411c0354a2c8}{Ajouter\+Article}} ()
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}ajouter un article à la base de donnée. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_interaction_ae89a33be27abd0d75d2f6887ce3d9b91}{Creer\+Fichier\+Facture\+Article}} ()
+\begin{DoxyCompactList}\small\item\em Créer un fichier txt (format facture) donnant la somme des articles vendus. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_interaction_ae85c2f2be81e4a8054c57764c8465682}{Creer\+Fichier\+Facture\+Acheteur}} ()
+\begin{DoxyCompactList}\small\item\em Créer un fichier txt (format facture) donnant la somme des articles vendus par acheteurs. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_interaction_a08ab380d8ea7020d0376a919fc1f6417}{Creer\+Fichier\+Facture\+Date}} ()
+\begin{DoxyCompactList}\small\item\em Créer un fichier txt (format facture) donnant la somme des articles vendus par date d\textquotesingle{}achat. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_thuillier_colin_project_1_1_core_1_1_core_interaction_a916d641ec490408d9f88be1047d888d7}{Recap\+Commande}} (string filename, \mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}} acheteur, List$<$ \mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_article_achetes}{Article\+Achetes}} $>$ articles\+Achetes)
+\begin{DoxyCompactList}\small\item\em Permet de créer un fichier txt (format facture) donnant la somme des articles achetés par un acheteur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Class qui va gérer les interactions avec les fichiers. 
+
+C\textquotesingle{}est à dire gérer les écritures et les lectures. Gestions des factures et du récapitulatif de commande. 
+
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_interaction_a1f456c020d05bacb132b411c0354a2c8}\label{class_thuillier_colin_project_1_1_core_1_1_core_interaction_a1f456c020d05bacb132b411c0354a2c8} 
+\index{ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}!AjouterArticle@{AjouterArticle}}
+\index{AjouterArticle@{AjouterArticle}!ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}}
+\doxysubsubsection{\texorpdfstring{AjouterArticle()}{AjouterArticle()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Interaction.\+Ajouter\+Article (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}ajouter un article à la base de donnée. 
+
+\begin{DoxyReturn}{Renvoie}
+Retourne true si l\textquotesingle{}article a été ajouté 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_interaction_ae85c2f2be81e4a8054c57764c8465682}\label{class_thuillier_colin_project_1_1_core_1_1_core_interaction_ae85c2f2be81e4a8054c57764c8465682} 
+\index{ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}!CreerFichierFactureAcheteur@{CreerFichierFactureAcheteur}}
+\index{CreerFichierFactureAcheteur@{CreerFichierFactureAcheteur}!ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}}
+\doxysubsubsection{\texorpdfstring{CreerFichierFactureAcheteur()}{CreerFichierFactureAcheteur()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Interaction.\+Creer\+Fichier\+Facture\+Acheteur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Créer un fichier txt (format facture) donnant la somme des articles vendus par acheteurs. 
+
+\begin{DoxyReturn}{Renvoie}
+Retourne true si le fichier a été créé 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_interaction_ae89a33be27abd0d75d2f6887ce3d9b91}\label{class_thuillier_colin_project_1_1_core_1_1_core_interaction_ae89a33be27abd0d75d2f6887ce3d9b91} 
+\index{ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}!CreerFichierFactureArticle@{CreerFichierFactureArticle}}
+\index{CreerFichierFactureArticle@{CreerFichierFactureArticle}!ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}}
+\doxysubsubsection{\texorpdfstring{CreerFichierFactureArticle()}{CreerFichierFactureArticle()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Interaction.\+Creer\+Fichier\+Facture\+Article (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Créer un fichier txt (format facture) donnant la somme des articles vendus. 
+
+\begin{DoxyReturn}{Renvoie}
+
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_interaction_a08ab380d8ea7020d0376a919fc1f6417}\label{class_thuillier_colin_project_1_1_core_1_1_core_interaction_a08ab380d8ea7020d0376a919fc1f6417} 
+\index{ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}!CreerFichierFactureDate@{CreerFichierFactureDate}}
+\index{CreerFichierFactureDate@{CreerFichierFactureDate}!ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}}
+\doxysubsubsection{\texorpdfstring{CreerFichierFactureDate()}{CreerFichierFactureDate()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Interaction.\+Creer\+Fichier\+Facture\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Créer un fichier txt (format facture) donnant la somme des articles vendus par date d\textquotesingle{}achat. 
+
+\begin{DoxyReturn}{Renvoie}
+Retourne true si le fichier a été créé 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_interaction_a916d641ec490408d9f88be1047d888d7}\label{class_thuillier_colin_project_1_1_core_1_1_core_interaction_a916d641ec490408d9f88be1047d888d7} 
+\index{ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}!RecapCommande@{RecapCommande}}
+\index{RecapCommande@{RecapCommande}!ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}}
+\doxysubsubsection{\texorpdfstring{RecapCommande()}{RecapCommande()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Interaction.\+Recap\+Commande (\begin{DoxyParamCaption}\item[{string}]{filename,  }\item[{\mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}}}]{acheteur,  }\item[{List$<$ \mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_article_achetes}{Article\+Achetes}} $>$}]{articles\+Achetes }\end{DoxyParamCaption})}
+
+
+
+Permet de créer un fichier txt (format facture) donnant la somme des articles achetés par un acheteur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em filename} & Le nom du fichier \\
+\hline
+{\em acheteur} & L\textquotesingle{}acheteur \\
+\hline
+{\em articles\+Achetes} & Les articles achetés \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne true si le fichier a été créé 
+\end{DoxyReturn}
+\Hypertarget{class_thuillier_colin_project_1_1_core_1_1_core_interaction_ace95959e5e968c1b6e1e0bd538b88bcd}\label{class_thuillier_colin_project_1_1_core_1_1_core_interaction_ace95959e5e968c1b6e1e0bd538b88bcd} 
+\index{ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}!RecapCommandeAcheteur@{RecapCommandeAcheteur}}
+\index{RecapCommandeAcheteur@{RecapCommandeAcheteur}!ThuillierColinProject.Core.CoreInteraction@{ThuillierColinProject.Core.CoreInteraction}}
+\doxysubsubsection{\texorpdfstring{RecapCommandeAcheteur()}{RecapCommandeAcheteur()}}
+{\footnotesize\ttfamily bool Thuillier\+Colin\+Project.\+Core.\+Core\+Interaction.\+Recap\+Commande\+Acheteur (\begin{DoxyParamCaption}\item[{string}]{filepath,  }\item[{\mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_acheteurs}{Acheteurs}}}]{acheteur,  }\item[{List$<$ \mbox{\hyperlink{class_thuillier_colin_project_1_1_models_1_1_article_achetes}{Article\+Achetes}} $>$}]{articles\+Achetes }\end{DoxyParamCaption})}
+
+
+
+Permet de créer un fichier txt (format facture) donnant la somme des articles achetés par un acheteur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em filepath} & Le chemin du fichier \\
+\hline
+{\em acheteur} & L\textquotesingle{}acheteur \\
+\hline
+{\em articles\+Achetes} & Les articles achetés \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne true si le fichier a été créé 
+\end{DoxyReturn}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+Thuillier\+Colin\+Project.\+Core/Core\+Interaction.\+cs\end{DoxyCompactItemize}
