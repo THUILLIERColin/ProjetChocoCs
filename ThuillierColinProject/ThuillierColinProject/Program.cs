@@ -1,4 +1,6 @@
-﻿namespace ThuillierColinProject;
+﻿using System.Diagnostics;
+
+namespace ThuillierColinProject;
 
 using ServiceLogs;
 using Core;
@@ -9,7 +11,6 @@ public class Program
     public static void Main(string[] args)
     {
         Programe();
-        // TestFacture();
     }
 
     public static void Programe()
