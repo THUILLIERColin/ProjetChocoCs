@@ -88,7 +88,7 @@ public class CoreInteraction
         Console.WriteLine("Création du fichier facture donnant la somme des articles vendus");
         SingletonLog.GetInstance().Log("L'utilisateur a choisi de créer un fichier facture donnant la somme des articles vendus", LogClass.TypeMessage.Info);
         // On créer un fichier avec pour nom la date, l'heure et "_factureArticle.txt"
-        string nomFichier = "./Data/" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + "_factureArticle.txt";
+        string nomFichier = "./Data/Facture/" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + "_factureArticle.txt";
         // On créer le fichier
         File.Create(nomFichier).Close();
         // On récupère les articles achetés
