@@ -80,13 +80,15 @@ public class CoreInteraction
     /// <summary>
     /// Créer un fichier txt (format facture) donnant la somme des articles vendus
     /// </summary>
-    /// <returns></returns>
+    /// <returns>
+    /// true si le fichier a été créé
+    /// </returns>
     public bool CreerFichierFactureArticle()
     {
         Console.WriteLine("Création du fichier facture donnant la somme des articles vendus");
         SingletonLog.GetInstance().Log("L'utilisateur a choisi de créer un fichier facture donnant la somme des articles vendus", LogClass.TypeMessage.Info);
         // On créer un fichier avec pour nom la date, l'heure et "_factureArticle.txt"
-        string nomFichier = "./Data/Facture/" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + "_factureArticle.txt";
+        string nomFichier = "./Data/" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + "_factureArticle.txt";
         // On créer le fichier
         File.Create(nomFichier).Close();
         // On récupère les articles achetés
@@ -100,16 +102,16 @@ public class CoreInteraction
             return false;
         }
         // On parcours les articles et on regarde combien de fois ils ont été achetés (en prenant en compte la quantité et le nombre de fois où ils ont été achetés)
-        foreach (ArticleAchetes articleAchete in articlesAchetes)
+        foreach (Article article in articles)
         {
             int nbAchete = 0;
-            Article article = articles.Find(x => x.Id == articleAchete.IdArticle);
-            if (article == null)
+            foreach (ArticleAchetes articleAchete in articlesAchetes)
             {
-                SingletonLog.GetInstance().Log("L'article acheté n'existe pas", LogClass.TypeMessage.Error);
-                return false;
+                if (article.Id == articleAchete.IdArticle)
+                {
+                    nbAchete += articleAchete.Quantite;
+                }
             }
-            nbAchete += articleAchete.Quantite;
             // On ajoute le prix de l'article acheté à la somme
             File.AppendAllText(nomFichier, article.Reference + " : " + article.Prix + "€ x " + nbAchete + " = " + article.Prix * nbAchete + "€\n");
         }
