@@ -118,14 +118,16 @@ public class CoreGestion
     /// </returns>
     public char ChoixAdmin()
     {
+        int i = 1;
         Console.WriteLine("Que voulez-vous faire ?");
-        Console.WriteLine("1 : Saisir un article");
-        Console.WriteLine("2 : Créer un fichier txt (format facture) donnant la somme des articles vendus");
+        Console.WriteLine( i + " : Saisir un article");
+        Console.WriteLine((i++) +" : Ajouter un administrateur");
+        Console.WriteLine((i++) +" : Créer un fichier txt (format facture) donnant la somme des articles vendus");
         Console.WriteLine(
-            "3 : Créer un fichier txt (format facture) donnant la somme des articles vendus par acheteurs");
+            (i++) +" : Créer un fichier txt (format facture) donnant la somme des articles vendus par acheteurs");
         Console.WriteLine(
-            "4 : Créer un fichier txt (format facture) donnant la somme des articles vendus par date d'achat");
-        Console.WriteLine("5 : Quitter");
+            (i++)+" : Créer un fichier txt (format facture) donnant la somme des articles vendus par date d'achat");
+        Console.WriteLine((i+1) + " : Quitter");
         bool choixOk = false;
         char choix = '0';
 
@@ -134,7 +136,7 @@ public class CoreGestion
             Console.WriteLine("Votre choix : ");
             choix = Console.ReadKey().KeyChar;
             Console.WriteLine();
-            if (choix == '1' || choix == '2' || choix == '3' || choix == '4' || choix == '5')
+            if (choix == '1' || choix == '2' || choix == '3' || choix == '4' || choix == '5' || choix == '6')
             {
                 choixOk = true;
             }
@@ -147,6 +149,21 @@ public class CoreGestion
 
         SingletonLog.GetInstance().Log("Choix de l'action : " + choix, LogClass.TypeMessage.Info);
         return choix;
+    }
+
+    /// <summary>
+    /// Fonction qui ajoute un administrateur
+    /// </summary>
+    /// <returns>
+    /// 
+    /// </returns>
+    public bool AjouterAdmin()
+    {
+        Administrateur newAdmin = CoreSingleton.GetInstance().CoreModels.CreationAdministrateur();
+        Ecrire<Administrateur> ecrire = new Ecrire<Administrateur>();
+        ecrire.Ecriture(newAdmin);
+        SingletonLog.GetInstance().Log("Un administrateur a été ajouté : " + newAdmin, LogClass.TypeMessage.Info);
+        return true;
     }
 
     /// <summary>
@@ -177,21 +194,23 @@ public class CoreGestion
                     interaction.AjouterArticle();
                     break;
                 case '2':
+                    this.AjouterAdmin();
+                    break;
+                case '3':
                     // Créer un fichier txt (format facture) donnant la somme des articles vendus.
                     interaction.CreerFichierFactureArticle();
                     break;
-                case '3':
+                case '4':
                     // Créer un fichier txt (format facture) donnant la somme des articles vendus par acheteurs.
                     interaction.CreerFichierFactureAcheteur();
                     break;
-                case '4':
+                case '5':
                     // Créer un fichier txt (format facture) donnant la somme des articles vendus par date d'achat.
                     interaction.CreerFichierFactureDate();
                     break;
-                case '5':
+                case '6':
                     // Quitter
                     Console.WriteLine("Au revoir");
-                    continuer = false;
                     return false;
                     break;
                 default:

@@ -25,7 +25,14 @@ public class GestionAdmin
                 {
                     Console.WriteLine("Login : ");
                     admin.Login = Console.ReadLine();
-                    tmpLogin = true;
+                    if(BDD.GetInstance().administrateurs.Exists(x => x.Login == admin.Login))
+                    {
+                        Console.WriteLine("Ce login est déjà pris");
+                    }
+                    else
+                    {
+                        tmpLogin = true;
+                    }
                 }
                 if (!tmpPassword)
                 {

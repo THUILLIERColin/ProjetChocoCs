@@ -103,7 +103,7 @@ public class Administrateur : ParentAttributeClass
         }
         if(obj is Administrateur administrateur)
         {
-            return administrateur.Login.ToLower().Equals(Login.ToLower()) && administrateur.Password.ToLower().Equals(Password.ToLower());
+            return administrateur.Login.ToLower().Equals(Login.ToLower());
         }
         return false;
     }
