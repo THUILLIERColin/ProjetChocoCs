@@ -229,38 +229,6 @@ public class CoreGestion
      *********************************************************************************************************************/
 
     /// <summary>
-    /// Permet de récupérer la saisie de l'utilisateur
-    /// </summary>
-    /// <param name="prompt">
-    /// Le message à afficher à l'utilisateur
-    /// </param>
-    /// <returns>
-    /// La saisie de l'utilisateur sous forme de string valide
-    /// </returns>
-    private string GetUserInput(string prompt)
-    {
-        string input = null;
-        bool isValid = false;
-
-        do
-        {
-            if (isValid)
-            {
-                Console.WriteLine($"{prompt} incorrect veuillez réessayer");
-            }
-            else
-            {
-                Console.WriteLine(prompt);
-            }
-
-            input = Console.ReadLine();
-            isValid = !string.IsNullOrWhiteSpace(input);
-        } while (!isValid);
-
-        return input;
-    }
-
-    /// <summary>
     /// Connection de l'acheteur
     /// </summary>
     /// <returns>
@@ -268,19 +236,49 @@ public class CoreGestion
     /// </returns>
     public Acheteurs ConnectionAcheteur()
     {
-        // On demande à l'utilisateur de rentrer son nom, prénom, adresse et téléphone
-        Console.WriteLine("Veuillez rentrer votre nom, prénom, adresse et téléphone");
+        // L'utilisateur doit saisir son nom, prenom, adresse et téléphone avant de pouvoir ajouter un article.
+        Console.WriteLine("Veuillez rentrer votre nom, prenom, adresse et téléphone");
         SingletonLog.GetInstance().Log("L'utilisateur va se connecter", LogClass.TypeMessage.Info);
-
-        // On crée l'acheteur
         Acheteurs acheteur = new Acheteurs();
-
-        acheteur.Nom = GetUserInput("Nom : ");
-        acheteur.Prenom = GetUserInput("Prenom : ");
-        acheteur.Adresse = GetUserInput("Adresse : ");
-        acheteur.Telephone = GetUserInput("Telephone : ");
-
-        Console.WriteLine();
+        bool tmpNom = false;
+        bool tmpPrenom = false;
+        bool tmpAdresse = false;
+        bool tmpTelephone = false;
+        int nbEssai = 0;
+        do
+        {
+            try
+            {
+                if (!tmpNom)
+                {
+                    Console.WriteLine(nbEssai > 0 ? "Nom incorrect veuillez réessayer" : "Nom : ");
+                    acheteur.Nom = Console.ReadLine();
+                    tmpNom = true;
+                }
+                if (!tmpPrenom)
+                {
+                    Console.WriteLine(nbEssai > 0 ? "Prenom incorrect veuillez réessayer" : "Prenom : ");
+                    acheteur.Prenom = Console.ReadLine();
+                    tmpPrenom = true;
+                }
+                if (!tmpAdresse)
+                {
+                    Console.WriteLine(nbEssai > 0 ? "Adresse incorrect veuillez réessayer" : "Adresse : ");
+                    acheteur.Adresse = Console.ReadLine();
+                    tmpAdresse = true;
+                }
+                if (!tmpTelephone)
+                {
+                    Console.WriteLine(nbEssai > 0 ? "Telephone incorrect veuillez réessayer" : "Telephone : ");
+                    acheteur.Telephone = Console.ReadLine();
+                    tmpTelephone = true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        } while (!(tmpNom && tmpPrenom && tmpAdresse && tmpTelephone));
 
         // On vérifie si l'acheteur existe dans la base de données
         return InscriptionAcheteur(acheteur);
