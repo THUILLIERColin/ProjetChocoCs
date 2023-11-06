@@ -121,12 +121,12 @@ public class CoreGestion
         int i = 1;
         Console.WriteLine("Que voulez-vous faire ?");
         Console.WriteLine( i + " : Saisir un article");
-        Console.WriteLine((i++) +" : Ajouter un administrateur");
-        Console.WriteLine((i++) +" : Créer un fichier txt (format facture) donnant la somme des articles vendus");
+        Console.WriteLine((++i) +" : Ajouter un administrateur");
+        Console.WriteLine((++i) +" : Créer un fichier txt (format facture) donnant la somme des articles vendus");
         Console.WriteLine(
-            (i++) +" : Créer un fichier txt (format facture) donnant la somme des articles vendus par acheteurs");
+            (++i) +" : Créer un fichier txt (format facture) donnant la somme des articles vendus par acheteurs");
         Console.WriteLine(
-            (i++)+" : Créer un fichier txt (format facture) donnant la somme des articles vendus par date d'achat");
+            (++i)+" : Créer un fichier txt (format facture) donnant la somme des articles vendus par date d'achat");
         Console.WriteLine((i+1) + " : Quitter");
         bool choixOk = false;
         char choix = '0';
